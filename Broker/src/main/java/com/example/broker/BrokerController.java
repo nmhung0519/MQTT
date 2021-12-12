@@ -17,6 +17,8 @@ public class BrokerController {
     @FXML
     protected void startListener() {
         _topics = new ArrayList<Topic>();
+        Topic temp = new Topic("thanhdoan");
+        _topics.add(temp);
         _listenerPublish = new Listener(ConnectionType.PUB);
         _listenerPublish.start();
         _listenerSubcribe = new Listener(ConnectionType.SUB);

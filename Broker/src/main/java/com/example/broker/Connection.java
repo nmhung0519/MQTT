@@ -33,6 +33,7 @@ public class Connection extends Thread {
                 case PASSWORD_INCORRECT:
                     os.write(("501").getBytes(StandardCharsets.UTF_8));
                     os.flush();
+
                     System.out.println("Server: 501");
                     break;
                 case ERROR:
@@ -56,7 +57,9 @@ public class Connection extends Thread {
                     try {
                         buffer = new byte[Common.BUFFER_SIZE];
                         int len = is.read(buffer);
+
                         String message = new String(buffer, 0, len, StandardCharsets.UTF_8);
+                        System.out.println(message);
                         BrokerController.pushMessage(topicName, message);
                     } catch (Exception ex) {
                         break;

@@ -4,21 +4,35 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class PublisherController {
     @FXML
+    private TextField txtMessage;
+    private Button btnSend;
     private Button btnStop;
     private Socket _socket = null;
     private InputStream _is = null;
     private OutputStream _os = null;
 
     @FXML
+    protected void send() throws IOException {
+        System.out.println(txtMessage.getText());
+        _os.write(txtMessage.getText().getBytes(StandardCharsets.UTF_8));
+        _os.flush();
+        System.out.println("Client: " + txtMessage.getText());
+    }
+
+
+    @FXML
     protected void stop() {
         try {
+
             if (_socket != null && _socket.isConnected()) {
                 _socket.close();
                 System.out.println("Close connection!");

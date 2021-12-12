@@ -13,5 +13,9 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
+    <Label fx:id="lbMessage" text="Message: " />
+    <TextField fx:id="txtMessage" />
+
+    <Button fx:id="btnSend" text="Send" onAction="#send" />
     <Button fx:id="btnStop" text="Stop" onAction="#stop" />
 </VBox>

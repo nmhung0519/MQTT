@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -25,6 +26,8 @@ public class LoginController {
     private TextField txtTopic;
     @FXML
     private Button btnStart;
+    @FXML
+    private Text txtError;
 
     private Socket socket;
     private OutputStream os;
@@ -82,12 +85,20 @@ public class LoginController {
                 String message = new String(buffer, 0, len, StandardCharsets.UTF_8);
                 System.out.println("SERVER: " + message);
                 if (message.equals("501")) {
+                    System.out.println("Password incorrect!");
+                    txtError.setVisible(true);
+                    txtError.setStyle("-fx-text-inner-color: red;");
+                    txtError.setText("Password incorrect");
                     break;
                 }
                 if (message.equals("502")) {
+                    System.out.println("Topic not exists");
+                    txtError.setVisible(true);
+                    txtError.setText("Topic not exists");
                     break;
                 }
                 if (message.equals("200")) {
+                    txtError.setVisible(false);
                     action.start();
                     return null;
                 }
