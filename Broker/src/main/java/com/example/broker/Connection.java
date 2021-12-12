@@ -12,7 +12,6 @@ public class Connection extends Thread {
     String topicName = null;
     byte[] buffer;
     int state = Common.CLIENT_STATE_PENDING;
-    List<String> messageQueue = new ArrayList<String>();
     public Connection(Socket socket, ConnectionType type) {
         try {
             is = socket.getInputStream();
@@ -24,7 +23,7 @@ public class Connection extends Thread {
         }
     }
     protected void finalize() throws Throwable {
-        //Xóa khỏi hàng chờ của topic
+
     }
     public void run() {
         System.out.println("Start thread for connection");
@@ -36,10 +35,15 @@ public class Connection extends Thread {
 
                     System.out.println("Server: 501");
                     break;
-                case ERROR:
+                case TOPIC_NOT_EXITS:
                     os.write(("502").getBytes(StandardCharsets.UTF_8));
                     os.flush();
                     System.out.println("Server: 502");
+                    break;
+                case ERROR:
+                    os.write(("502").getBytes(StandardCharsets.UTF_8));
+                    os.flush();
+                    System.out.println("Server: 503");
                     break;
                 case SUCCESS:
                     os.write(("200").getBytes(StandardCharsets.UTF_8));
@@ -59,7 +63,7 @@ public class Connection extends Thread {
                         int len = is.read(buffer);
 
                         String message = new String(buffer, 0, len, StandardCharsets.UTF_8);
-                        System.out.println(message);
+                        System.out.println("Client: " + message);
                         BrokerController.pushMessage(topicName, message);
                     } catch (Exception ex) {
                         break;
@@ -67,8 +71,14 @@ public class Connection extends Thread {
                 } while (true);
             }
             else if (_type == ConnectionType.SUB) {
-
+                BrokerController.checkTopic(topicName);
             }
+        }
+        if (_type == ConnectionType.PUB) {
+            BrokerController.deletePublisher(this);
+        }
+        else if (_type == ConnectionType.SUB) {
+            BrokerController.deleteSubriber(this);
         }
         System.out.println("Close connection with client!");
     }
@@ -108,5 +118,17 @@ public class Connection extends Thread {
     private boolean login(String username, String password) {
         if (username.equals("admin") && password.equals("admin")) return true;
         return false;
+    }
+    public String getTopic() {
+        return topicName;
+    }
+    public void sendMessage(String message) {
+        try {
+            os.write(message.getBytes(StandardCharsets.UTF_8));
+            os.flush();
+        }
+        catch (Exception ex) {
+
+        }
     }
 }

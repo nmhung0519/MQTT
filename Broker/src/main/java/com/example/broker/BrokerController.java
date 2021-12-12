@@ -11,14 +11,13 @@ import java.util.List;
 public class BrokerController {
     @FXML
     private Button btnStart;
-    private Listener _listenerPublish = null;
-    private Listener _listenerSubcribe = null;
+    private static Listener _listenerPublish = null;
+    private static Listener _listenerSubcribe = null;
     private static List<Topic> _topics = null;
     @FXML
     protected void startListener() {
         _topics = new ArrayList<Topic>();
-        Topic temp = new Topic("thanhdoan");
-        _topics.add(temp);
+        _topics.add(new Topic("A"));
         _listenerPublish = new Listener(ConnectionType.PUB);
         _listenerPublish.start();
         _listenerSubcribe = new Listener(ConnectionType.SUB);
@@ -37,5 +36,27 @@ public class BrokerController {
         for (Topic t : _topics) {
             if (t.getName().equals(topic)) t.addMessage(message);
         }
+    }
+
+    public static boolean sendMessageToSubcribe(String topic, String message) {
+        return _listenerSubcribe.pushMessageToSubcribe(topic, message);
+    }
+
+    public static boolean hasSubcriber(String topic) {
+        return _listenerSubcribe.hasConnectionInTopic(topic);
+    }
+    public static void checkTopic(String topic) {
+        for (Topic t : _topics) {
+            if (t.getName().equals(topic)) {
+                t.checkMessage();
+                break;
+            }
+        }
+    }
+    public static void deleteSubriber(Connection connection) {
+        _listenerSubcribe.deleteConnection(connection);
+    }
+    public static void deletePublisher(Connection connection) {
+        _listenerPublish.deleteConnection(connection);
     }
 }

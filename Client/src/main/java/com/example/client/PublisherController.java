@@ -3,6 +3,7 @@ package com.example.client;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -27,12 +28,9 @@ public class PublisherController {
         _os.flush();
         System.out.println("Client: " + txtMessage.getText());
     }
-
-
     @FXML
-    protected void stop() {
+    protected void stop(ActionEvent actionEvent) {
         try {
-
             if (_socket != null && _socket.isConnected()) {
                 _socket.close();
                 System.out.println("Close connection!");
@@ -45,12 +43,14 @@ public class PublisherController {
             Stage stage = new Stage();
             ViewProvider.getLogin(stage);
             stage.show();
+            Node source = (Node) actionEvent.getSource();
+            Stage curStage = (Stage) source.getScene().getWindow();
+            curStage.close();
         }
         catch (Exception ex) {
             System.out.println("[Error while open login window] - " + ex);
         }
     }
-
     public void setSocket(Socket socket) throws IOException {
         _socket = socket;
         _is = socket.getInputStream();

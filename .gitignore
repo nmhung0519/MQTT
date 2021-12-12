@@ -1,3 +1,4 @@
 /Broker/out
 /Client/out
 /Dashboard/out
+*.class

@@ -11,8 +11,10 @@ public class Listener extends Thread {
     ServerSocket listener = null;
     Socket socket;
     ConnectionType _type;
+    private List<Connection> _connections;
     public Listener(ConnectionType type) {
         _type = type;
+        _connections = new ArrayList<Connection>();
     }
     public void run() {
         System.out.println("Starting listener...");
@@ -38,10 +40,33 @@ public class Listener extends Thread {
                 socket = listener.accept();
                 Connection connection = new Connection(socket, _type);
                 connection.run();
+                _connections.add(connection);
             }
             catch (Exception ex) {
                 System.out.println("[Error while accept connection] - " + ex);
             }
         } while (true);
+    }
+    public boolean pushMessageToSubcribe(String topic, String message) {
+        boolean result = false;
+        for (Connection connection : _connections) {
+            if (connection.getTopic().equals(topic)) {
+                connection.sendMessage(message);
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean hasConnectionInTopic(String topic) {
+        for (Connection connection : _connections) {
+            if (connection.getTopic().equals(topic)) return true;
+        }
+        return false;
+    }
+    public void deleteConnection(Connection connection) {
+        for (Connection c : _connections) {
+            if (c.equals(connection)) _connections.remove(c);
+        }
+        System.out.println(_type + ": " + _connections.stream().count());
     }
 }
