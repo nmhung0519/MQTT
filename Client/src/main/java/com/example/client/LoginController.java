@@ -87,7 +87,6 @@ public class LoginController {
                 if (message.equals("501")) {
                     System.out.println("Password incorrect!");
                     txtError.setVisible(true);
-                    txtError.setStyle("-fx-text-inner-color: red;");
                     txtError.setText("Password incorrect");
                     break;
                 }
@@ -103,16 +102,37 @@ public class LoginController {
                     return null;
                 }
                 if (message.equals("USERNAME")) {
+                    if(txtUsername.getText().isEmpty()) {
+                        txtError.setText("Username cannot be null");
+                        txtError.setVisible(true);
+                        btnStart.setDisable(false);
+                        socket.close();
+                        return null;
+                    }
                     os.write(txtUsername.getText().getBytes(StandardCharsets.UTF_8));
                     os.flush();
                     System.out.println("Client: " + txtUsername.getText());
                 }
                 if (message.equals("PASSWORD")) {
+                    if(txtPassword.getText().isEmpty()) {
+                        txtError.setText("Password cannot be null");
+                        txtError.setVisible(true);
+                        socket.close();
+                        btnStart.setDisable(false);
+                        return null;
+                    }
                     os.write(txtPassword.getText().getBytes(StandardCharsets.UTF_8));
                     os.flush();
                     System.out.println("Client: " + txtPassword.getText());
                 }
                 if (message.equals("TOPIC")) {
+                    if(txtTopic.getText().isEmpty()) {
+                        txtError.setText("Topics cannot be null");
+                        txtError.setVisible(true);
+                        btnStart.setDisable(false);
+                        socket.close();
+                        return null;
+                    }
                     os.write(txtTopic.getText().getBytes(StandardCharsets.UTF_8));
                     os.flush();
                     System.out.println("Client: " + txtTopic.getText());

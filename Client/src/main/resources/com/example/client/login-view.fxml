@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.text.Text?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<?import java.net.URL?>
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="CENTER" spacing="20.0"
       fx:controller="com.example.client.LoginController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label fx:id="lbUserName" text="Username: " />
-    <TextField fx:id="txtUsername" />
-    <Label fx:id="lbPassword" text="Password: " />
-    <PasswordField fx:id="txtPassword" />
-    <Label fx:id="lbTopic" text="Topic: " />
-    <TextField fx:id="txtTopic" />
-    <Text fx:id="txtError" visible="false" style="color: red;" />
-    <Button fx:id="btnStart" text="Start" onAction="#start"/>
+    <Text styleClass="title" text="Sign In" />
+
+    <GridPane>
+        <Label fx:id="lbUserName" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="label" text="Username: "/>
+        <TextField  GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="txtUsername"/>
+        <Label fx:id="lbPassword" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label" text="Password: "/>
+        <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="txtPassword"/>
+        <Label fx:id="lbTopic" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label" text="Topic: "/>
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="txtTopic"/>
+    </GridPane>
+    <Text fx:id="txtError" styleClass="warning-text" visible="false" />
+    <Button fx:id="btnStart" styleClass="button" text="Login" onAction="#start"/>
+
+    <stylesheets>
+        <URL value="@client.css"/>
+    </stylesheets>
 </VBox>
