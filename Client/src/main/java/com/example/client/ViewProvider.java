@@ -19,8 +19,10 @@ public class ViewProvider {
         FXMLLoader fxmlLoader = new FXMLLoader(Client.class.getResource("publisher-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         PublisherController controller = fxmlLoader.<PublisherController>getController();
+
         controller.setSocket(socket);
         stage.setTitle("Publisher");
         stage.setScene(scene);
+//        controller.sendRandom();
     }
 }

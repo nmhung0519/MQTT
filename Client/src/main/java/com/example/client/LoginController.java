@@ -37,6 +37,7 @@ public class LoginController {
     @FXML
     protected void start(ActionEvent actionEvent) throws IOException {
         btnStart.setDisable(true);
+        txtError.setVisible(false);
         try {
             socket = new Socket(Common.SERVER_ADDRESS, Common.SERVER_PORT);
             os = socket.getOutputStream();
@@ -55,6 +56,7 @@ public class LoginController {
                     }
                     catch (Exception ex) {
                         System.out.println("[Error while start publisher] - " + ex);
+
                         if (socket.isConnected()) {
                             socket.close();
                             System.out.println("Close connection!");
@@ -69,6 +71,13 @@ public class LoginController {
         }
         catch (Exception ex) {
             System.out.println("[Error while connect to server]" + ex);
+            if(socket == null) {
+
+                txtError.setText("Error when connecting to server. Please try again");
+                txtError.setVisible(true);
+                btnStart.setDisable(false);
+                return;
+            }
             if (socket.isConnected()) {
                 socket.close();
                 System.out.println("Close connection!");

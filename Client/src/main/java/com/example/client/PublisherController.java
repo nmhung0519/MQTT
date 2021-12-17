@@ -11,28 +11,53 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.Timer;
 
 public class PublisherController {
     @FXML
     private TextField txtMessage;
+    @FXML
     private Button btnSend;
+
+    @FXML
     private Button btnStop;
+
+    Timer timer = new Timer();
+
     private Socket _socket = null;
     private InputStream _is = null;
     private OutputStream _os = null;
 
+//    public void sendRandom() {
+//
+//        DataSender dataSender = new DataSender(_socket, _is, _os);
+//
+//        do {
+//            dataSender.start();
+//        } while (_socket != null);
+//    }
+
+
+
     @FXML
     protected void send() throws IOException {
-        System.out.println(txtMessage.getText());
-        _os.write(txtMessage.getText().getBytes(StandardCharsets.UTF_8));
-        _os.flush();
-        System.out.println("Client: " + txtMessage.getText());
+//        System.out.println(txtMessage.getText());
+//        _os.write(txtMessage.getText().getBytes(StandardCharsets.UTF_8));
+//        _os.flush();
+//        System.out.println("Client: " + txtMessage.getText());
+        DataSender dataSender = new DataSender(_socket, _is, _os);
+
+        timer.schedule(dataSender,0,  3000);
+
+        btnSend.setDisable(true);
     }
+
     @FXML
     protected void stop(ActionEvent actionEvent) {
         try {
             if (_socket != null && _socket.isConnected()) {
                 _socket.close();
+                timer.cancel();
                 System.out.println("Close connection!");
             }
         }
