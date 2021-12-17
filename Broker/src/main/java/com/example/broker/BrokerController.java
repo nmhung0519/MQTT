@@ -17,31 +17,29 @@ public class BrokerController {
     @FXML
     protected void startListener() {
         _topics = new ArrayList<Topic>();
-        _topics.add(new Topic("A"));
+        _topics.add(new Topic("A/B"));
         _listenerPublish = new Listener(ConnectionType.PUB);
+        _listenerPublish.setDaemon(true);
         _listenerPublish.start();
         _listenerSubcribe = new Listener(ConnectionType.SUB);
+        _listenerSubcribe.setDaemon(true);
         _listenerSubcribe.start();
         btnStart.setDisable(true);
     }
-
     public static boolean checkExistsTopic(String name) {
         for (Topic t : _topics) {
             if (t.getName().equals(name)) return true;
         }
         return false;
     }
-
     public static void pushMessage(String topic, String message) {
         for (Topic t : _topics) {
             if (t.getName().equals(topic)) t.addMessage(message);
         }
     }
-
     public static boolean sendMessageToSubcribe(String topic, String message) {
         return _listenerSubcribe.pushMessageToSubcribe(topic, message);
     }
-
     public static boolean hasSubcriber(String topic) {
         return _listenerSubcribe.hasConnectionInTopic(topic);
     }

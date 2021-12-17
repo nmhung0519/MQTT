@@ -39,8 +39,9 @@ public class Listener extends Thread {
             try {
                 socket = listener.accept();
                 Connection connection = new Connection(socket, _type);
-                connection.run();
+                connection.setDaemon(true);
                 _connections.add(connection);
+                connection.run();
             }
             catch (Exception ex) {
                 System.out.println("[Error while accept connection] - " + ex);
@@ -50,7 +51,7 @@ public class Listener extends Thread {
     public boolean pushMessageToSubcribe(String topic, String message) {
         boolean result = false;
         for (Connection connection : _connections) {
-            if (connection.getTopic().equals(topic)) {
+            if (connection.getTopic().equals(topic) && connection.isActive()) {
                 connection.sendMessage(message);
                 result = true;
             }
@@ -59,14 +60,12 @@ public class Listener extends Thread {
     }
     public boolean hasConnectionInTopic(String topic) {
         for (Connection connection : _connections) {
-            if (connection.getTopic().equals(topic)) return true;
+            if (connection.getTopic().equals(topic) && connection.isActive()) return true;
         }
         return false;
     }
     public void deleteConnection(Connection connection) {
-        for (Connection c : _connections) {
-            if (c.equals(connection)) _connections.remove(c);
-        }
+        _connections.removeIf(x -> x.equals(connection));
         System.out.println(_type + ": " + _connections.stream().count());
     }
 }

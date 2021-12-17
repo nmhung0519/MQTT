@@ -131,4 +131,8 @@ public class Connection extends Thread {
 
         }
     }
+    public boolean isActive() {
+        if (state == Common.CLIENT_STATE_ACTIVE) return true;
+        return false;
+    }
 }
