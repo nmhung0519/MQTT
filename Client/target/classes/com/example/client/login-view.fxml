@@ -19,8 +19,10 @@
         <TextField  GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="txtUsername"/>
         <Label fx:id="lbPassword" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label" text="Password: "/>
         <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="txtPassword"/>
-        <Label fx:id="lbTopic" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label" text="Topic: "/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="txtTopic"/>
+        <Label fx:id="lbLocation" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label" text="Location: "/>
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="txtLocation"/>
+        <Label fx:id="lbSensor" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="label" text="Sensor: "/>
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="txtSensor"/>
     </GridPane>
     <Text fx:id="txtError" styleClass="warning-text" visible="false" />
     <Button fx:id="btnStart" styleClass="button" text="Login" onAction="#start"/>

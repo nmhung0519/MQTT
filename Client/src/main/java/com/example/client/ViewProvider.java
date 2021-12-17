@@ -23,6 +23,10 @@ public class ViewProvider {
         controller.setSocket(socket);
         stage.setTitle("Publisher");
         stage.setScene(scene);
+<<<<<<< Updated upstream
 //        controller.sendRandom();
+=======
+        controller.autoSendData();
+>>>>>>> Stashed changes
     }
 }

@@ -23,7 +23,9 @@ public class LoginController {
     @FXML
     private PasswordField txtPassword;
     @FXML
-    private TextField txtTopic;
+    private TextField txtLocation;
+    @FXML
+    private TextField txtSensor;
     @FXML
     private Button btnStart;
     @FXML
@@ -36,8 +38,32 @@ public class LoginController {
 
     @FXML
     protected void start(ActionEvent actionEvent) throws IOException {
+        txtError.setText("");
         btnStart.setDisable(true);
+<<<<<<< Updated upstream
         txtError.setVisible(false);
+=======
+        if (txtUsername.getText().isEmpty()) {
+            txtError.setText("Username can't be null");
+            btnStart.setDisable(false);
+            return;
+        }
+        if (txtPassword.getText().isEmpty()) {
+            txtError.setText("Password can't be null");
+            btnStart.setDisable(false);
+            return;
+        }
+        if (txtLocation.getText().isEmpty()) {
+            txtError.setText("Location can't be null");
+            btnStart.setDisable(false);
+            return;
+        }
+        if (txtSensor.getText().isEmpty()) {
+            txtError.setText("Sensor can't be null");
+            btnStart.setDisable(false);
+            return;
+        }
+>>>>>>> Stashed changes
         try {
             socket = new Socket(Common.SERVER_ADDRESS, Common.SERVER_PORT);
             os = socket.getOutputStream();
@@ -56,8 +82,12 @@ public class LoginController {
                     }
                     catch (Exception ex) {
                         System.out.println("[Error while start publisher] - " + ex);
+<<<<<<< Updated upstream
 
                         if (socket.isConnected()) {
+=======
+                        if (socket != null && socket.isConnected()) {
+>>>>>>> Stashed changes
                             socket.close();
                             System.out.println("Close connection!");
                         }
@@ -71,6 +101,7 @@ public class LoginController {
         }
         catch (Exception ex) {
             System.out.println("[Error while connect to server]" + ex);
+<<<<<<< Updated upstream
             if(socket == null) {
 
                 txtError.setText("Error when connecting to server. Please try again");
@@ -79,6 +110,9 @@ public class LoginController {
                 return;
             }
             if (socket.isConnected()) {
+=======
+            if (socket != null && socket.isConnected()) {
+>>>>>>> Stashed changes
                 socket.close();
                 System.out.println("Close connection!");
             }
@@ -111,40 +145,20 @@ public class LoginController {
                     return null;
                 }
                 if (message.equals("USERNAME")) {
-                    if(txtUsername.getText().isEmpty()) {
-                        txtError.setText("Username cannot be null");
-                        txtError.setVisible(true);
-                        btnStart.setDisable(false);
-                        socket.close();
-                        return null;
-                    }
                     os.write(txtUsername.getText().getBytes(StandardCharsets.UTF_8));
                     os.flush();
                     System.out.println("Client: " + txtUsername.getText());
                 }
                 if (message.equals("PASSWORD")) {
-                    if(txtPassword.getText().isEmpty()) {
-                        txtError.setText("Password cannot be null");
-                        txtError.setVisible(true);
-                        socket.close();
-                        btnStart.setDisable(false);
-                        return null;
-                    }
                     os.write(txtPassword.getText().getBytes(StandardCharsets.UTF_8));
                     os.flush();
                     System.out.println("Client: " + txtPassword.getText());
                 }
                 if (message.equals("TOPIC")) {
-                    if(txtTopic.getText().isEmpty()) {
-                        txtError.setText("Topics cannot be null");
-                        txtError.setVisible(true);
-                        btnStart.setDisable(false);
-                        socket.close();
-                        return null;
-                    }
-                    os.write(txtTopic.getText().getBytes(StandardCharsets.UTF_8));
+                    String topic = txtLocation.getText() + "/" + txtSensor.getText();
+                    os.write(topic.getBytes(StandardCharsets.UTF_8));
                     os.flush();
-                    System.out.println("Client: " + txtTopic.getText());
+                    System.out.println("Client: " + topic);
                 }
             } while (true);
             if (socket.isConnected()) socket.close();

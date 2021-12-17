@@ -11,7 +11,6 @@ public class Client extends Application {
         ViewProvider.getLogin(stage);
         stage.show();
     }
-
     public static void main(String[] args) {
         launch();
     }
