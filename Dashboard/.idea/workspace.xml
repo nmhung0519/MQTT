@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7c7cd3a4-f30e-443b-abef-330e5faeb0c6" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_dlsc_formsfx_formsfx_core_11_3_2.xml" afterDir="false" />
@@ -26,16 +25,50 @@
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_11_0_2.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_11_0_2.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dashboard/Action.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dashboard/Common.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dashboard/Connection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dashboard/DashboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dashboard/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dashboard/ViewProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/dashboard/client.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/dashboard/dashboard-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/dashboard/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/src/main/java/com/example/broker/BrokerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/src/main/java/com/example/broker/BrokerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/src/main/java/com/example/broker/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/src/main/java/com/example/broker/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/src/main/java/com/example/broker/Listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/src/main/java/com/example/broker/Listener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/target/classes/com/example/broker/BrokerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/target/classes/com/example/broker/BrokerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/target/classes/com/example/broker/Listener.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/target/classes/com/example/broker/Listener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/PublisherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/PublisherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/ViewProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/main/java/com/example/client/ViewProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/main/resources/com/example/client/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/main/resources/com/example/client/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/target/classes/com/example/client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/target/classes/com/example/client/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/target/classes/com/example/client/LoginController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/target/classes/com/example/client/LoginController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/target/classes/com/example/client/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/target/classes/com/example/client/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/target/classes/com/example/client/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/target/classes/com/example/client/login-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dashboard.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dashboard/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dashboard/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dashboard/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/dashboard/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -54,11 +87,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/example/dashboard" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="S:\Projects\MQTT\Dashboard\src\main\resources\com\example\dashboard" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.dashboard.HelloApplication" />
+    <configuration name="Dashboard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.dashboard.Dashboard" />
       <module name="Dashboard" />
       <extension name="coverage">
         <pattern>
@@ -72,7 +110,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.Dashboard" />
       </list>
     </recent_temporary>
   </component>
@@ -101,6 +139,71 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/DashboardController.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/LoginController.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/LoginController.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/LoginController.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/LoginController.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/LoginController.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/ViewProvider.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/ViewProvider.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/ViewProvider.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/ViewProvider.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/ViewProvider.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/dashboard/ViewProvider.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
