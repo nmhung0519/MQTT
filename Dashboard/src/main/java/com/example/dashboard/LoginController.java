@@ -62,6 +62,7 @@ public class LoginController {
         }
         try {
             socket = new Socket(Common.SERVER_ADDRESS, Common.SERVER_PORT);
+            socket.setKeepAlive(true);
             os = socket.getOutputStream();
             is = socket.getInputStream();
             Node source = (Node) actionEvent.getSource();
@@ -88,7 +89,6 @@ public class LoginController {
             };
             CompletableFuture<Void> completableFuture = new CompletableFuture<Void>();
             completableFuture.complete(login(action));
-
         }
         catch (Exception ex) {
             System.out.println("[Error while connect to server]" + ex);

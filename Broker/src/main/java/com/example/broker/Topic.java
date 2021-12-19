@@ -28,8 +28,9 @@ public class Topic {
         if (messages.stream().count() == 0) return;
         flag = !BrokerController.hasSubcriber(name);
         if (flag) return;
-        for (String message : messages) {
-            BrokerController.sendMessageToSubcribe(name, message);
-        }
+        while (messages.stream().count() > 0) {
+            BrokerController.sendMessageToSubcribe(name, messages.get(0));
+            messages.remove(0);
+        };
     }
 }

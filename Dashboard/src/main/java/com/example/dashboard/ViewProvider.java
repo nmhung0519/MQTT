@@ -1,8 +1,11 @@
 package com.example.dashboard;
 
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -20,7 +23,15 @@ public class ViewProvider {
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         DashboardController controller = fxmlLoader.<DashboardController>getController();
         stage.setTitle("Dashboard");
-        controller.start(socket);
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                Platform.exit();
+                controller.stopDashboard();
+            }
+        });
+        controller.setSocket(socket);
+        controller.start();
         stage.setScene(scene);
     }
 }

@@ -7,16 +7,21 @@ import java.nio.charset.StandardCharsets;
 
 public class Connection extends Thread {
     ConnectionType _type;
+    Socket _socket = null;
     InputStream is = null;
     OutputStream os = null;
     String topicName = null;
+    Queue<String> messageQueue;
+    boolean flag = true;
     byte[] buffer;
     int state = Common.CLIENT_STATE_PENDING;
     public Connection(Socket socket, ConnectionType type) {
         try {
+            _socket = socket;
             is = socket.getInputStream();
             os = socket.getOutputStream();
             _type = type;
+            messageQueue = new LinkedList<String>();
         }
         catch (Exception ex) {
 
@@ -72,6 +77,26 @@ public class Connection extends Thread {
             }
             else if (_type == ConnectionType.SUB) {
                 BrokerController.checkTopic(topicName);
+                try {
+                    _socket.setSoTimeout(3000);
+                    do {
+                        if (is.read() == -1) throw new Exception();
+                        if (messageQueue.stream().count() > 0) {
+                            try {
+                                String message = messageQueue.poll();
+                                os.write(message.getBytes(StandardCharsets.UTF_8));
+                                os.flush();
+                            } catch (Exception ex) {
+                            }
+                        }
+                    } while (_socket.isConnected());
+                }
+                catch (Exception ex) {
+                    try {
+                        if (_socket != null && _socket.isConnected()) _socket.close();
+                    }
+                    catch (Exception exc) {}
+                }
             }
         }
         if (_type == ConnectionType.PUB) {
@@ -123,13 +148,7 @@ public class Connection extends Thread {
         return topicName;
     }
     public void sendMessage(String message) {
-        try {
-            os.write(message.getBytes(StandardCharsets.UTF_8));
-            os.flush();
-        }
-        catch (Exception ex) {
-
-        }
+        messageQueue.add(message);
     }
     public boolean isActive() {
         if (state == Common.CLIENT_STATE_ACTIVE) return true;

@@ -1,8 +1,11 @@
 package com.example.client;
 
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -19,14 +22,16 @@ public class ViewProvider {
         FXMLLoader fxmlLoader = new FXMLLoader(Client.class.getResource("publisher-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         PublisherController controller = fxmlLoader.<PublisherController>getController();
-
         controller.setSocket(socket);
         stage.setTitle("Publisher");
         stage.setScene(scene);
-<<<<<<< Updated upstream
-//        controller.sendRandom();
-=======
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                Platform.exit();
+                controller.stopPublisher();
+            }
+        });
         controller.autoSendData();
->>>>>>> Stashed changes
     }
 }

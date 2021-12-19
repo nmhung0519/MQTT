@@ -40,9 +40,6 @@ public class LoginController {
     protected void start(ActionEvent actionEvent) throws IOException {
         txtError.setText("");
         btnStart.setDisable(true);
-<<<<<<< Updated upstream
-        txtError.setVisible(false);
-=======
         if (txtUsername.getText().isEmpty()) {
             txtError.setText("Username can't be null");
             btnStart.setDisable(false);
@@ -63,7 +60,6 @@ public class LoginController {
             btnStart.setDisable(false);
             return;
         }
->>>>>>> Stashed changes
         try {
             socket = new Socket(Common.SERVER_ADDRESS, Common.SERVER_PORT);
             os = socket.getOutputStream();
@@ -82,12 +78,7 @@ public class LoginController {
                     }
                     catch (Exception ex) {
                         System.out.println("[Error while start publisher] - " + ex);
-<<<<<<< Updated upstream
-
-                        if (socket.isConnected()) {
-=======
                         if (socket != null && socket.isConnected()) {
->>>>>>> Stashed changes
                             socket.close();
                             System.out.println("Close connection!");
                         }
@@ -101,18 +92,7 @@ public class LoginController {
         }
         catch (Exception ex) {
             System.out.println("[Error while connect to server]" + ex);
-<<<<<<< Updated upstream
-            if(socket == null) {
-
-                txtError.setText("Error when connecting to server. Please try again");
-                txtError.setVisible(true);
-                btnStart.setDisable(false);
-                return;
-            }
-            if (socket.isConnected()) {
-=======
             if (socket != null && socket.isConnected()) {
->>>>>>> Stashed changes
                 socket.close();
                 System.out.println("Close connection!");
             }
